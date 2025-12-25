@@ -3,11 +3,15 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
-import Home from "./Home.jsx";
+import Home from "./components/Home.jsx";
 import About from "./About.jsx";
-import UserProfile from "./UserProfile.jsx";
+import UserProfile from "./components/UserProfile.jsx";
 import Layout from "./Layout.jsx";
-import BlogDash from "./BlogDash.jsx";
+import BlogWrapper from "./components/blog/BlogWrapper.jsx";
+import LoginPage from "./components/blog/LoginPage.jsx";
+import Dashboard from "./components/blog/Dashboard.jsx";
+import PostDetail from "./components/blog/PostDetail.jsx";
+import ProtectedRoute from "./components/blog/ProtectedRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +32,24 @@ const router = createBrowserRouter([
         element: <UserProfile />,
       },
       { path: "/app", element: <App /> },
-      { path: "/blog", element: <BlogDash /> },
+      // Blog routes with authentication
+      {
+        path: "/blog",
+        element: <BlogWrapper />,
+        children: [
+          {
+            path: "/blog",
+            element: <LoginPage />,
+          },
+          {
+            element: <ProtectedRoute />,
+            children: [
+              { path: "/blog/dashboard", element: <Dashboard /> },
+              { path: "/blog/post/:postId", element: <PostDetail /> },
+            ],
+          },
+        ],
+      },
     ],
   },
 ]);

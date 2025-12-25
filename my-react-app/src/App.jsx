@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./App.css";
 import DependencyArray from "./DependencyArray";
-import MouseTracker from "./MouseTracker";
-import PostFetcher from "./PostFetcher";
-import UncontrolledLogin from "./UncontrolledLogin";
-import ControlledSignup from "./ControlledSignup";
-import PersistentCounter from "./PersistentCounter";
-import { ThemeContext } from "./ThemeContext";
+import MouseTracker from "./components/MouseTracker";
+import PostFetcher from "./components/PostFetcher";
+import UncontrolledLogin from "./components/UncontrolledLogin";
+import ControlledSignup from "./components/ControlledSignup";
+import PersistentCounter from "./components/PersistentCounter";
+import { ThemeContext } from "./components/ThemeContext";
 
 function App() {
   const [theme, setTheme] = useState("light");

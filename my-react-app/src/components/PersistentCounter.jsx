@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "../useLocalStorage";
 
 const PersistentCounter = () => {
   // 5. Use the custom hook to create a persistent counter
